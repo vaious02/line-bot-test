@@ -27,7 +27,6 @@ $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 
 
 $arrayPostData = array();
-$arrayPostDataDetail = array();
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 
 
@@ -79,7 +78,10 @@ if(count($obj) === 1) {
     $arrayPostData['messages'][0]['contents']['contents'][$i]['body']['footer']['contents'][0]['style'] = "primary";
   }
 
-  replyMsg($arrayHeader,$arrayPostData);
+  $arrayPost['messages'][0]['type'] = "text";
+  $arrayPost['messages'][0]['text'] = strval($arrayPostData)
+
+  replyMsg($arrayHeader,$arrayPost);
 
 }
 
@@ -114,6 +116,7 @@ if(count($obj) > 1) {
   $arrayPostData['messages'][0]['contents']['contents'][0]['footer']['contents'][0]['action']['uri'] = "http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=" . $message;
   $arrayPostData['messages'][0]['contents']['contents'][0]['footer']['contents'][0]['color'] = "#8D769D";
   $arrayPostData['messages'][0]['contents']['contents'][0]['footer']['contents'][0]['style'] = "primary";
+
 
   replyMsg($arrayHeader,$arrayPostData);
 
