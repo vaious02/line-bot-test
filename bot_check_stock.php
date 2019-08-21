@@ -39,7 +39,7 @@ if(count($obj) > 0) {
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
     for ($i=0; $i < count($obj[0]['stock']); $i++) {
-      $str = $obj[0]['product_name'] . '\n' . $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . '\n';
+      $str = $obj[0]['product_name'] . '<br />' . $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . '<br />';
 
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['layout'] = "baseline";
@@ -60,7 +60,7 @@ if(count($obj) > 0) {
 
   } else {
     $link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . $message;
-    $str = 'ชื่อสินค้าเหมือนกันหลายชิ้น \n\n Link: ' . $link;
+    $str = 'ชื่อสินค้าเหมือนกันหลายชิ้น <br /> Link: ' . $link;
 
     // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
     // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
