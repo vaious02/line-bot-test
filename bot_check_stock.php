@@ -12,7 +12,7 @@ $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
 //รับข้อความจากผู้ใช้
 $message = $arrayJson['events'][0]['message']['text'];
-$url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . $message;
+$url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . encodeURIComponent($message);
 $result = file_get_contents($url);
 $obj = json_decode($result, true);
 
@@ -106,6 +106,11 @@ $arrayPostData['messages'][0]['type'] = "text";
 $arrayPostData['messages'][0]['text'] = $str;
 replyMsg($arrayHeader,$arrayPostData);
 
+
+function encodeURIComponent($str) {
+    $revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')');
+    return strtr(rawurlencode($str), $revert);
+}
 
 
 function replyMsg($arrayHeader,$arrayPostData){
