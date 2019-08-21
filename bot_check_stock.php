@@ -18,92 +18,94 @@ $result = file_get_contents($url);
 $obj = json_decode($result, true);
 
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
-// $arrayPostData['messages'][0]['type'] = "text";
-// $arrayPostData['messages'][0]['text'] = count($obj);
-// replyMsg($arrayHeader,$arrayPostData);
+$str = "";
 if(count($obj) > 0) {
-  $arrayPostData['messages'][0]['type'] = "flex";
-  $arrayPostData['messages'][0]['altText'] = "Flex Message";
+  // $arrayPostData['messages'][0]['type'] = "flex";
+  // $arrayPostData['messages'][0]['altText'] = "Flex Message";
   if(count($obj) == 1) {
-    $arrayPostData['messages'][0]['contents']['type'] = "bubble";
-    $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
-    $arrayPostData['messages'][0]['contents']['body']['layout'] = "vertical";
-    $arrayPostData['messages'][0]['contents']['body']['spacing'] = "md";
-    $arrayPostData['messages'][0]['contents']['body']['action']['type'] = "uri";
-    $arrayPostData['messages'][0]['contents']['body']['action']['label'] = "Action";
-    $arrayPostData['messages'][0]['contents']['body']['action']['uri'] = "https://linecorp.com";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['text'] = $obj[0]['product_name'];
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['size'] = "lg";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['weight'] = "bold";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][1]['type'] = "separator";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['type'] = "box";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
+    // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
+    // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
+    // $arrayPostData['messages'][0]['contents']['body']['layout'] = "vertical";
+    // $arrayPostData['messages'][0]['contents']['body']['spacing'] = "md";
+    // $arrayPostData['messages'][0]['contents']['body']['action']['type'] = "uri";
+    // $arrayPostData['messages'][0]['contents']['body']['action']['label'] = "Action";
+    // $arrayPostData['messages'][0]['contents']['body']['action']['uri'] = "https://linecorp.com";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['type'] = "text";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['text'] = $obj[0]['product_name'];
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['size'] = "lg";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['weight'] = "bold";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][1]['type'] = "separator";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['type'] = "box";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
     for ($i=0; $i < count($obj[0]['stock']); $i++) {
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['layout'] = "baseline";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][0]['type'] = "icon";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][0]['url'] = "https://img.icons8.com/color/48/000000/star.png";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['type'] = "text";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['text'] = $obj[0]['stock'][$i]['name'];
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['flex'] = 0;
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['margin'] = "sm";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['weight'] = "weight";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['type'] = "text";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['text'] = $obj[0]['stock'][$i]['qty'];
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['size'] = "sm";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['align'] = "end";
-      $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['color'] = "#AAAAAA";
+      $str = $obj[0]['product_name'] . '\n' . $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . '\n';
+
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['layout'] = "baseline";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][0]['type'] = "icon";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][0]['url'] = "https://img.icons8.com/color/48/000000/star.png";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['type'] = "text";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['text'] = $obj[0]['stock'][$i]['name'];
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['flex'] = 0;
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['margin'] = "sm";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][1]['weight'] = "weight";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['type'] = "text";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['text'] = $obj[0]['stock'][$i]['qty'];
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['size'] = "sm";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['align'] = "end";
+      // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['color'] = "#AAAAAA";
 
     }
 
   } else {
+    $link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . $message;
+    $str = 'ชื่อสินค้าเหมือนกันหลายชิ้น \n\n Link: ' . $link;
 
-    $arrayPostData['messages'][0]['contents']['type'] = "bubble";
-    $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
-    $arrayPostData['messages'][0]['contents']['body']['layout'] = "vertical";
-    $arrayPostData['messages'][0]['contents']['body']['spacing'] = "md";
-    $arrayPostData['messages'][0]['contents']['body']['action']['type'] = "uri";
-    $arrayPostData['messages'][0]['contents']['body']['action']['label'] = "Action";
-    $arrayPostData['messages'][0]['contents']['body']['action']['uri'] = "https://linecorp.com";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['text'] = $message;
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['size'] = "lg";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][0]['weight'] = "bold";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][1]['type'] = "separator";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['type'] = "box";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['type'] = "box";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['layout'] = "vertical";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['spacing'] = "sm";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['contents'][0]['type'] = "text";
-    $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['contents'][0]['text'] = "สินค้ามีมากกว่า 1 ชิ้น";
+    // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
+    // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
+    // $arrayPostData['messages'][0]['contents']['body']['layout'] = "vertical";
+    // $arrayPostData['messages'][0]['contents']['body']['spacing'] = "md";
+    // $arrayPostData['messages'][0]['contents']['body']['action']['type'] = "uri";
+    // $arrayPostData['messages'][0]['contents']['body']['action']['label'] = "Action";
+    // $arrayPostData['messages'][0]['contents']['body']['action']['uri'] = "https://linecorp.com";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['type'] = "text";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['text'] = $message;
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['size'] = "lg";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][0]['weight'] = "bold";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][1]['type'] = "separator";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['type'] = "box";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['type'] = "box";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['layout'] = "vertical";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['spacing'] = "sm";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['contents'][0]['type'] = "text";
+    // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][0]['contents'][0]['text'] = "สินค้ามีมากกว่า 1 ชิ้น";
+
+
   }
 
-  $arrayPostData['messages'][0]['contents']['footer']['type'] = "box";
-  $arrayPostData['messages'][0]['contents']['footer']['layout'] = "vertical";
-  $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['type'] = "button";
-  $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['action']['type'] = "uri";
-  $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['action']['label'] = "ดูรายละเอียด";
-  $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['action']['uri'] = "https://linecorp.com";
-  $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['color'] = "#905C44";
-  $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['style'] = "primary";
+  // $arrayPostData['messages'][0]['contents']['footer']['type'] = "box";
+  // $arrayPostData['messages'][0]['contents']['footer']['layout'] = "vertical";
+  // $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['type'] = "button";
+  // $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['action']['type'] = "uri";
+  // $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['action']['label'] = "ดูรายละเอียด";
+  // $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['action']['uri'] = "https://linecorp.com";
+  // $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['color'] = "#905C44";
+  // $arrayPostData['messages'][0]['contents']['footer']['contents'][0]['style'] = "primary";
 
   // replyMsg($arrayHeader,$arrayPostData);
-
-  echo json_encode($arrayPostData);
 
 
 } else {
-
-  $arrayPostData['messages'][0]['type'] = "text";
-  $arrayPostData['messages'][0]['text'] = "ไม่มีสินค้าที่คุณค้นหาค่ะ";
-  // replyMsg($arrayHeader,$arrayPostData);
-  echo json_encode($arrayPostData);
+  $str = 'ไม่มีสินค้าที่คุณค้นหาค่ะ';
 
 }
+
+$arrayPostData['messages'][0]['type'] = "text";
+$arrayPostData['messages'][0]['text'] = $str;
+replyMsg($arrayHeader,$arrayPostData);
 
 
 
@@ -115,7 +117,7 @@ function replyMsg($arrayHeader,$arrayPostData){
   curl_setopt($ch, CURLOPT_POST, true);
   curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
   curl_setopt($ch, CURLOPT_POSTFIELDS,json_encode($arrayPostData));
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
   curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
   $result = curl_exec($ch);
   curl_close ($ch);
