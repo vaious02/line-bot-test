@@ -22,7 +22,7 @@ $link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . $
 if(count($obj) > 0) {
   // $arrayPostData['messages'][0]['type'] = "flex";
   // $arrayPostData['messages'][0]['altText'] = "Flex Message";
-  $str = $obj[0]['product_name'] . PHP_EOL  . ' ';
+  $str = $obj[0]['product_name'] . PHP_EOL;
   if(count($obj) == 1) {
     // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
     // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
