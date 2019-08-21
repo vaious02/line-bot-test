@@ -15,11 +15,11 @@ $message = $arrayJson['events'][0]['message']['text'];
 
 $url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . $message;
 $result = file_get_contents($url);
-
+$obj = json_decode($result, true);
 
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 $arrayPostData['messages'][0]['type'] = "text";
-$arrayPostData['messages'][0]['text'] = $result[0]['product_name'];
+$arrayPostData['messages'][0]['text'] = $obj[0]['stock'][0]['qty'];
 replyMsg($arrayHeader,$arrayPostData);
 
 // $arrayPostData = array();
