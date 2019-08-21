@@ -14,8 +14,13 @@ $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 $message = $arrayJson['events'][0]['message']['text'];
 
 $url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . $message;
-$json = file_get_contents($url);
-$obj = json_decode($json);
+// $json = file_get_contents($url);
+// $obj = json_decode($json);
+$ch = curl_init($url);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, TRUE);
+curl_setopt($ch, CURLOPT_NOBODY, TRUE);
+$obj = curl_exec($ch);
 
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 $arrayPostData['messages'][0]['type'] = "text";
