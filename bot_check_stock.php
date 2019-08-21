@@ -93,7 +93,7 @@ if(count($obj) > 0) {
 
   // replyMsg($arrayHeader,$arrayPostData);
 
-  echo $message;
+  echo $arrayPostData;
 
 
 } else {
@@ -101,7 +101,7 @@ if(count($obj) > 0) {
   $arrayPostData['messages'][0]['type'] = "text";
   $arrayPostData['messages'][0]['text'] = "ไม่มีสินค้าที่คุณค้นหาค่ะ";
   // replyMsg($arrayHeader,$arrayPostData);
-  echo $message;
+  echo $arrayPostData;
 
 }
 
