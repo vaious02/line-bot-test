@@ -41,8 +41,7 @@ if(count($obj) > 0) {
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
     for ($i=0; $i < count($obj[0]['stock']); $i++) {
       $str .= $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . ' ';
-      $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link;
-      
+
 
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['layout'] = "baseline";
@@ -60,6 +59,7 @@ if(count($obj) > 0) {
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['color'] = "#AAAAAA";
 
     }
+    $str .= 'Link: ' . $link;
 
   } else {
     $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link;
