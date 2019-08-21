@@ -14,8 +14,8 @@ $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 $message = encodeURIComponent($arrayJson['events'][0]['message']['text']);
 
 $url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . $message;
-$json = file_get_contents($url);
-$obj = json_decode($json);
+$obj = file_get_contents($url);
+// $obj = json_decode($json);
 
 $arrayPostData = array();
 $arrayPostDataCard = array();
