@@ -11,8 +11,7 @@ $arrayHeader[] = "Content-Type: application/json";
 $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
 //รับข้อความจากผู้ใช้
-// $message = $arrayJson['events'][0]['message']['text'];
-$message = 'ลีวายลิซ่า';
+$message = $arrayJson['events'][0]['message']['text'];
 $url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . $message;
 $result = file_get_contents($url);
 $obj = json_decode($result, true);
@@ -39,7 +38,7 @@ if(count($obj) > 0) {
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
     for ($i=0; $i < count($obj[0]['stock']); $i++) {
-      $str = $obj[0]['product_name'] . '<br />' . $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . '<br />';
+      $str = $obj[0]['product_name'] . ' ' . $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . ' ';
 
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['layout'] = "baseline";
@@ -60,7 +59,7 @@ if(count($obj) > 0) {
 
   } else {
     $link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . $message;
-    $str = 'ชื่อสินค้าเหมือนกันหลายชิ้น <br /> Link: ' . $link;
+    $str = 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link;
 
     // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
     // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
