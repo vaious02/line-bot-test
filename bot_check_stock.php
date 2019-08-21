@@ -62,7 +62,7 @@ if(count($obj) > 0) {
     $str .= 'Link: ' . $link;
 
   } else {
-    $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link;
+    $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link . ' ';
 
     // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
     // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
