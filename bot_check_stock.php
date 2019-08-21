@@ -19,7 +19,7 @@ $obj = json_decode($result, true);
 
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 $arrayPostData['messages'][0]['type'] = "text";
-$arrayPostData['messages'][0]['text'] = $obj[0]['stock'][0]['qty'];
+$arrayPostData['messages'][0]['text'] = $obj[0]['product_name'];
 replyMsg($arrayHeader,$arrayPostData);
 
 // $arrayPostData = array();
