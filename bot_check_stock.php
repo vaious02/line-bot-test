@@ -11,7 +11,7 @@ $arrayHeader[] = "Content-Type: application/json";
 $arrayHeader[] = "Authorization: Bearer {$accessToken}";
 
 //รับข้อความจากผู้ใช้
-$message = $arrayJson['events'][0]['message']['text'];
+$message = encodeURIComponent($arrayJson['events'][0]['message']['text']);
 
 $url = "http://www.stylhunt.com/Sellboard24/module/line/api/api_get_detailproduct_with_name.php?p_name=" . $message;
 $json = file_get_contents($url);
@@ -120,7 +120,10 @@ if(count($obj) > 1) {
   replyMsg($arrayHeader,$arrayPostData);
 }
 
-
+function encodeURIComponent($str) {
+    $revert = array('%21'=>'!', '%2A'=>'*', '%27'=>"'", '%28'=>'(', '%29'=>')');
+    return strtr(rawurlencode($str), $revert);
+}
 
 function replyMsg($arrayHeader,$arrayPostData){
   $strUrl = "https://api.line.me/v2/bot/message/reply";
