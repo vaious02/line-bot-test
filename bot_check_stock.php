@@ -40,7 +40,7 @@ if(count($obj) > 0) {
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
     for ($i=0; $i < count($obj[0]['stock']); $i++) {
-      $str .= $obj[0]['stock'][$i]['name'] . PHP_EOL . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . ' '. PHP_EOL ;
+      $str .= $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . ' '. PHP_EOL ;
 
 
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
