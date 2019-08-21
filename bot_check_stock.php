@@ -18,7 +18,7 @@ $obj = json_decode($result, true);
 
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 $str = "";
-$link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . $message;
+$link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . encodeURIComponent($message);
 if(count($obj) > 0) {
   // $arrayPostData['messages'][0]['type'] = "flex";
   // $arrayPostData['messages'][0]['altText'] = "Flex Message";
