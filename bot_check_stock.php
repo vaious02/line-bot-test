@@ -59,7 +59,7 @@ if(count($obj) > 0) {
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['contents'][2]['color'] = "#AAAAAA";
 
     }
-    $str .= 'Link: ' . $link;
+    $str .= 'Link: ' . $link  . ' ';
 
   } else {
     $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link . ' ';
