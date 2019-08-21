@@ -19,7 +19,7 @@ $obj = file_get_contents($url);
 
 $arrayPostData['replyToken'] = $arrayJson['events'][0]['replyToken'];
 $arrayPostData['messages'][0]['type'] = "text";
-$arrayPostData['messages'][0]['text'] = $message;
+$arrayPostData['messages'][0]['text'] = $obj[0]['product_name'];
 replyMsg($arrayHeader,$arrayPostData);
 
 // $arrayPostData = array();
