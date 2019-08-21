@@ -22,7 +22,7 @@ $link = 'http://www.stylhunt.com/Sellboard24/check_stock/index.html?p_name=' . $
 if(count($obj) > 0) {
   // $arrayPostData['messages'][0]['type'] = "flex";
   // $arrayPostData['messages'][0]['altText'] = "Flex Message";
-  $str = $obj[0]['product_name']  . '\r\n ';
+  $str = $obj[0]['product_name'] . PHP_EOL  . ' ';
   if(count($obj) == 1) {
     // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
     // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
@@ -40,7 +40,7 @@ if(count($obj) > 0) {
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['layout'] = "vertical";
     // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['spacing'] = "sm";
     for ($i=0; $i < count($obj[0]['stock']); $i++) {
-      $str .= $obj[0]['stock'][$i]['name'] . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . '\r\n ';
+      $str .= $obj[0]['stock'][$i]['name'] . PHP_EOL . ' ' . $obj[0]['stock'][$i]['qty'] . ' ชิ้น' . ' '. PHP_EOL ;
 
 
       // $arrayPostData['messages'][0]['contents']['body']['contents'][2]['contents'][$i]['type'] = "box";
@@ -62,7 +62,7 @@ if(count($obj) > 0) {
     $str .= 'Link: ' . $link  . ' ';
 
   } else {
-    $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น \r\nLink: ' . $link . ' ';
+    $str .= 'ชื่อสินค้าเหมือนกันหลายชิ้น Link: ' . $link . ' ';
 
     // $arrayPostData['messages'][0]['contents']['type'] = "bubble";
     // $arrayPostData['messages'][0]['contents']['body']['type'] = "box";
