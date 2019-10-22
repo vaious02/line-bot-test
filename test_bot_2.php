@@ -1,18 +1,16 @@
-<?php
-
-  $accessToken = "8JqAA77f7BO7iNwJtB4GsZGvtdvjaH7AOk/B+mz3/UvVu2iBKDEtWMJgp3f6OhaWSuvKszTSvgpqYer1n2bwHuljIAiY/OWs/Ld6nqvmKePBmTM/uAuI24UdvI7ijR/+BTGLHm6OsbPnNS/ZLT99LQdB04t89/1O/w1cDnyilFU=";//copy Channel access token ตอนที่ตั้งค่ามาใส่
-
+<?php 
 	/*Get Data From POST Http Request*/
 	$datas = file_get_contents('php://input');
 	/*Decode Json From LINE Data Body*/
 	$deCode = json_decode($datas,true);
+	file_put_contents('log.txt', file_get_contents('php://input') . PHP_EOL, FILE_APPEND);
 	$replyToken = $deCode['events'][0]['replyToken'];
 	$messages = [];
 	$messages['replyToken'] = $replyToken;
 	$messages['messages'][0] = getFormatTextMessage("เอ้ย ถามอะไรก็ตอบได้");
 	$encodeJson = json_encode($messages);
 	$LINEDatas['url'] = "https://api.line.me/v2/bot/message/reply";
-  	$LINEDatas['token'] = $accessToken;
+  	$LINEDatas['token'] = "8JqAA77f7BO7iNwJtB4GsZGvtdvjaH7AOk/B+mz3/UvVu2iBKDEtWMJgp3f6OhaWSuvKszTSvgpqYer1n2bwHuljIAiY/OWs/Ld6nqvmKePBmTM/uAuI24UdvI7ijR/+BTGLHm6OsbPnNS/ZLT99LQdB04t89/1O/w1cDnyilFU=";
   	$results = sentMessage($encodeJson,$LINEDatas);
 	/*Return HTTP Request 200*/
 	http_response_code(200);
